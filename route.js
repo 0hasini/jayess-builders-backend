@@ -36,7 +36,7 @@ userRouter.post("/message", async (req, res) => {
     const schema = z.object({
         name: z.string().min(1, 'Name is required'),
         interestedArea: z.string().min(1, 'Interested area is required'),
-        phoneNo: z.string().regex(/^\d{10}$/, 'Phone number must be 10 digits'),
+        phoneNo: z.string().regex(/^[\+\d\s\-\(\)\.]{7,30}$/, 'Phone number must be 7-30 characters (country codes, spaces, dashes, parentheses, and dots allowed)'),
         email: z.string().email('Invalid email address'),
         message: z.string().min(1, 'Message is required'),
     });
